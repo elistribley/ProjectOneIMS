@@ -19,12 +19,12 @@ public class ItemController implements CrudController<Item> {
 
 	public static final Logger LOGGER = LogManager.getLogger();
 
-	private ItemsDAO itemsDAO;
+	private ItemsDAO itemDAO;
 	private Utils utils;
 
 	public ItemController(ItemsDAO itemDAO, Utils utils) {
 		super();
-		this.itemsDAO = itemsDAO;
+		this.itemDAO = itemDAO;
 		this.utils = utils;
 	}
 
@@ -33,7 +33,7 @@ public class ItemController implements CrudController<Item> {
 	 */
 	@Override
 	public List<Item> readAll() {
-		List<Item> items = itemsDAO.readAll();
+		List<Item> items = itemDAO.readAll();
 		for (Item item : items) {
 			LOGGER.info(item);
 		}
@@ -51,7 +51,7 @@ public class ItemController implements CrudController<Item> {
 		String itemName = utils.getString();
 		LOGGER.info("Please enter the price of the item");
 		Double itemPrice = utils.getDouble();
-		Item items = itemsDAO.create(new Item(itemId, itemName, itemPrice));
+		Item items = itemDAO.create(new Item(itemId, itemName, itemPrice));
 		LOGGER.info("Item created");
 		return items;
 	}
@@ -67,7 +67,7 @@ public class ItemController implements CrudController<Item> {
 		String itemName = utils.getString();
 		LOGGER.info("Please enter the item price");
 		Double itemPrice = utils.getDouble();
-		Item items = itemsDAO.update(new Item(itemId, itemName, itemPrice));
+		Item items = itemDAO.update(new Item(itemId, itemName, itemPrice));
 		LOGGER.info("Item Updated");
 		return items;
 	}
@@ -81,7 +81,7 @@ public class ItemController implements CrudController<Item> {
 	public int delete() {
 		LOGGER.info("Please enter the item id of the item you would like to delete");
 		Long itemId = utils.getLong();
-		return itemsDAO.delete(itemId);
+		return itemDAO.delete(itemId);
 	}
 
 }

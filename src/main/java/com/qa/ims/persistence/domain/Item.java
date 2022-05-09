@@ -2,58 +2,42 @@ package com.qa.ims.persistence.domain;
 
 import java.util.Objects;
 
-public class Items {
+public class Item {
 	
-	private int itemId;
+	private Long itemId;
 	private String itemName;
-	private double itemPrice;
-	
-	public Items(int itemId, String itemName, double itemPrice) {
+	private Double itemPrice;
+	public Item(Long itemId, String itemName, Double itemPrice) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 	}
-	
-	public Items(int itemId, double itemPrice) {
+	public Item() {
 		super();
-		this.itemId = itemId;
-		this.itemPrice = itemPrice;
 	}
-	
-	public Items() {
-	super();
-	}
-
-	public int getItemId() {
+	public Long getItemId() {
 		return itemId;
 	}
-
-	public void setItemId(int itemId) {
+	public void setItemId(Long itemId) {
 		this.itemId = itemId;
 	}
-
 	public String getItemName() {
 		return itemName;
 	}
-
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-
-	public double getItemPrice() {
+	public Double getItemPrice() {
 		return itemPrice;
 	}
-
-	public void setItemPrice(double itemPrice) {
+	public void setItemPrice(Double itemPrice) {
 		this.itemPrice = itemPrice;
 	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(itemId, itemName, itemPrice);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -62,9 +46,9 @@ public class Items {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Items other = (Items) obj;
-		return itemId == other.itemId && Objects.equals(itemName, other.itemName)
-				&& Double.doubleToLongBits(itemPrice) == Double.doubleToLongBits(other.itemPrice);
+		Item other = (Item) obj;
+		return Objects.equals(itemId, other.itemId) && Objects.equals(itemName, other.itemName)
+				&& Objects.equals(itemPrice, other.itemPrice);
 	}
 	
 	

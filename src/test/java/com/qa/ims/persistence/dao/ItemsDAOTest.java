@@ -6,56 +6,57 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.qa.ims.persistence.domain.Customer;
+
+import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.utils.DBUtils;
 
-public class CustomerDAOTest {
+public class ItemsDAOTest {
 
-	private final CustomerDAO DAO = new CustomerDAO();
-
+	private final ItemsDAO DAO = new ItemsDAO();
+	
 	@BeforeClass
 	public static void initsetup() {
 		System.out.println("Before Class");
 	}
+	
 	@Before
 	public void setup() {
 		DBUtils.connect();
 		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
-		System.out.println("Before every test!");
+		System.out.println("Before method!");
 	}
 
 	@Test
 	public void testCreate() {
-		final Customer created = new Customer(1L, "jordan", "harrison");
+		final Item created = new Item(1L, "Comic book", 8.99);
 		assertEquals(created, DAO.create(created));
 	}
 
 	@Test
 	public void testReadAll() {
-		List<Customer> expected = new ArrayList<>();
-		expected.add(new Customer(1L, "jordan", "harrison"));
+		List<Item> expected = new ArrayList<>();
+		expected.add(new Item(1L, "Comic book", 8.99));
 		assertEquals(expected, DAO.readAll());
 	}
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Customer(1L, "jordan", "harrison"), DAO.readLatest());
+		assertEquals(new Item(1L, "Comic book", 8.99), DAO.readLatest());
 	}
 
 	@Test
 	public void testRead() {
 		final Long ID = 1L;
-		assertEquals(new Customer(ID, "jordan", "harrison"), DAO.read(ID));
+		assertEquals(new Item(1L, "Comic book", 8.99), DAO.read(ID));
 	}
 
 	@Test
 	public void testUpdate() {
-		final Customer updated = new Customer(1L, "chris", "perrins");
+		final Item updated = new Item(1L, "Comic book", 8.99);
 		assertEquals(updated, DAO.update(updated));
 
 	}
@@ -66,7 +67,6 @@ public class CustomerDAOTest {
 	}
 	@After
 	public void after() {
-		System.out.println("Finished!");
+		System.out.println("At the end!");
 	}
-	
 }

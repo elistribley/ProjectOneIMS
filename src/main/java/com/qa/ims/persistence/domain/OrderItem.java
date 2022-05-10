@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class OrderItem{
 
-	private Long orderitemsId;
+	private Long orderItemsId;
 	private Long orderId;
 	private Long itemId;
 	
 	
-	public OrderItem(Long orderitemsId, Long orderId, Long itemId) {
+	public OrderItem(Long orderItemsId, Long orderId, Long itemId) {
 		super();
-		this.orderitemsId = orderitemsId;
+		this.orderItemsId = orderItemsId;
 		this.orderId = orderId;
 		this.itemId = itemId;
 		
@@ -19,11 +19,11 @@ public class OrderItem{
 	public OrderItem() {
 		super();
 	}
-	public Long getOrderitemsId() {
-		return orderitemsId;
+	public Long getOrderItemsId() {
+		return orderItemsId;
 	}
-	public void setOrderitemsId(Long orderitemsId) {
-		this.orderitemsId = orderitemsId;
+	public void setOrderItemsId(Long orderItemsId) {
+		this.orderItemsId = orderItemsId;
 	}
 	public Long getOrderId() {
 		return orderId;
@@ -39,7 +39,7 @@ public class OrderItem{
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(itemId, orderId, orderitemsId);
+		return Objects.hash(itemId, orderId, orderItemsId);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -51,7 +51,7 @@ public class OrderItem{
 			return false;
 		OrderItem other = (OrderItem) obj;
 		return Objects.equals(itemId, other.itemId) && Objects.equals(orderId, other.orderId)
-				&& Objects.equals(orderitemsId, other.orderitemsId);
+				&& Objects.equals(orderItemsId, other.orderItemsId);
 	}
 	
 	

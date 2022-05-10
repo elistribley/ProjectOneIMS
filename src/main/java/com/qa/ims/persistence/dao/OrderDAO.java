@@ -30,7 +30,7 @@ public class OrderDAO implements Dao<Order> {
 		List<Item> items = readId(resultSet.getLong("order_id"));
 		return new Order(orderId, customerId, items);
 	}
-//
+
 	public OrderItem modelFromResultSet2(ResultSet resultSet) throws SQLException {
 		Long orderItemsId = resultSet.getLong("id_order_items");
 		Long orderId = resultSet.getLong("order_id");
@@ -38,7 +38,7 @@ public class OrderDAO implements Dao<Order> {
 		
 		return new OrderItem(orderItemsId, orderId, itemId);
 	}
-//
+
 	public List<Item> readId(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();

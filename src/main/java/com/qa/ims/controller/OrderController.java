@@ -101,6 +101,7 @@ public class OrderController implements CrudController<Order> {
 			currentOrder = orderDAO.read(orderId);
 		} while (currentOrder == null);
 		boolean exit = false;
+		//GOT THIS IDEA FROM ONLINE -- SOURCE
 		do {
 			currentOrder = orderDAO.read(orderId);
 			LOGGER.info(currentOrder.toString());

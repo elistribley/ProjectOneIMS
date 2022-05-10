@@ -113,7 +113,7 @@ public class ItemsDAO implements Dao<Item> {
 
 
 	//DELETE BY ID
-	public int delete(Long id) {
+	public Long delete(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection.prepareStatement("DELETE FROM Items WHERE item_id = ?");) {
 			statement.setLong(1, id);
@@ -122,7 +122,7 @@ public class ItemsDAO implements Dao<Item> {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
-		return 0;
+		return 0L;
 	}
 
 

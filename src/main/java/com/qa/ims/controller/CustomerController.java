@@ -73,7 +73,7 @@ public class CustomerController implements CrudController<Customer> {
 	}
 
 	/**
-	 * Deletes an existing customer by the id of the customer
+	 * Deletes an existing customer by the id of the customer - CHANGED TO LONG
 	 * 
 	 * @return
 	 */

@@ -30,7 +30,7 @@ public class ItemsDAO implements Dao<Item> {
 		
 	}
 
-	
+	//READ ALL METHOD
 	@Override
 	public List<Item> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
@@ -47,7 +47,7 @@ public class ItemsDAO implements Dao<Item> {
 		}
 		return new ArrayList<>();
 	}
-
+	//READ LATEST
 	public Item readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
@@ -61,7 +61,7 @@ public class ItemsDAO implements Dao<Item> {
 		return null;
 	}
 
-	
+	//CREATE
 	@Override
 	public Item create(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
@@ -77,7 +77,7 @@ public class ItemsDAO implements Dao<Item> {
 		}
 		return null;
 	}
-
+	//READ BY ID
 	public Item read(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection.prepareStatement("SELECT * FROM items WHERE item_id = ?");) {
@@ -93,7 +93,7 @@ public class ItemsDAO implements Dao<Item> {
 		return null;
 	}
 
-	
+	//UPDATE ITEM
 	@Override
 	public Item update(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
@@ -112,7 +112,7 @@ public class ItemsDAO implements Dao<Item> {
 	}
 
 
-	
+	//DELETE BY ID
 	public int delete(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection.prepareStatement("DELETE FROM Items WHERE item_id = ?");) {

@@ -14,7 +14,7 @@ public interface Dao<T> {
 
 	T update(T t);
 
-	int delete(Long id);
+	int delete(Long t);
 
 	T modelFromResultSet(ResultSet resultSet) throws SQLException;
 }

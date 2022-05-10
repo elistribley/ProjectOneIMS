@@ -1,6 +1,6 @@
 package com.qa.ims.persistence.dao;
 import java.sql.Connection;
-import java.sql.Date;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,7 +27,7 @@ public class OrderDAO implements Dao<Order> {
 	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
 		Long orderId = resultSet.getLong("order_id");
 		Long customerId = resultSet.getLong("id_customer");	
-		List<Item> items = readLines(resultSet.getLong("order_id"));
+		List<Item> items = readId(resultSet.getLong("order_id"));
 		return new Order(orderId, customerId, items);
 	}
 //
@@ -39,7 +39,7 @@ public class OrderDAO implements Dao<Order> {
 		return new OrderItem(orderItemsId, orderId, itemId);
 	}
 //
-	public List<Item> readLines(Long orderId) {
+	public List<Item> readId(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement
@@ -97,7 +97,7 @@ public class OrderDAO implements Dao<Order> {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
 		}
-		return null;
+		return order;
 	}
 
 	public OrderItem readLatestItems() {

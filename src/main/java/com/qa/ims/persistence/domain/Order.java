@@ -8,33 +8,36 @@ public class Order {
 	
 	private Long orderId;
 	private Long customerId;
-	private Long orderDetailsId;
-	private Date dateForOrder;
-	private List<Item> items;
 	
-	public Order(Long orderId, Long customerId, Long orderDetailsId, Date dateForOrder,  List<Item> items) {
+	private List<Item> items;
+
+	public Order(Long orderId, Long customerId, List<Item> items) {
 		super();
 		this.orderId = orderId;
 		this.customerId = customerId;
-		this.orderDetailsId = orderDetailsId;
-		this.dateForOrder = dateForOrder;
 		this.items = items;
-
 	}
 
-	public Order(Long orderId, Long customerId, Long orderDetailsId, List<Item> items) {
+	public Order(Long customerId, List<Item> items) {
+		super();
+		this.customerId = customerId;
+		this.items = items;
+	}
+	
+	
+	public Order(Long orderId, Long customerId) {
 		super();
 		this.orderId = orderId;
 		this.customerId = customerId;
-		this.orderDetailsId = orderDetailsId;
-		this.items = items;
 	}
 
-	public Order(Long orderId, Long orderDetailsId, List<Item> items) {
+	public Order(Long customerId) {
 		super();
-		this.orderId = orderId;
-		this.orderDetailsId = orderDetailsId;
-		this.items = items;
+		this.customerId = customerId;
+	}
+
+	public Order() {
+		super();
 	}
 
 	public Long getOrderId() {
@@ -53,22 +56,6 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public Long getOrderDetailsId() {
-		return orderDetailsId;
-	}
-
-	public void setOrderDetailsId(Long orderDetailsId) {
-		this.orderDetailsId = orderDetailsId;
-	}
-
-	public Date getDateForOrder() {
-		return dateForOrder;
-	}
-
-	public void setDateForOrder(Date dateForOrder) {
-		this.dateForOrder = dateForOrder;
-	}
-
 	public List<Item> getItems() {
 		return items;
 	}
@@ -79,7 +66,7 @@ public class Order {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(customerId, dateForOrder, items, orderDetailsId, orderId);
+		return Objects.hash(customerId, items, orderId);
 	}
 
 	@Override
@@ -91,11 +78,10 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		return Objects.equals(customerId, other.customerId) && Objects.equals(dateForOrder, other.dateForOrder)
-				&& Objects.equals(items, other.items) && Objects.equals(orderDetailsId, other.orderDetailsId)
+		return Objects.equals(customerId, other.customerId) && Objects.equals(items, other.items)
 				&& Objects.equals(orderId, other.orderId);
 	}
-
+	
 	
 
 }

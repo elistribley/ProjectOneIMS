@@ -6,21 +6,18 @@ DROP TABLE IF EXISTS `Orders`;
 DROP TABLE IF EXISTS `OrderItems`;
 DROP TABLE IF EXISTS `Items`;
 
-
 CREATE TABLE IF NOT EXISTS `Customers` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `first_name` VARCHAR(40) NOT NULL,
     `surname` VARCHAR(40) NOT NULL,
+    `address` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `Order` (
     `order_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `date_for_order` DATETIME,
     `id_customer` INT(10),
-    `id_orderdetails` INT(10),
     PRIMARY KEY (`order_id`),
-    FOREIGN KEY (`id_orderdetails`) REFERENCES `OrderItems` (`id_item`),
     FOREIGN KEY (`id_customer`) REFERENCES `Customers` (`id`)
     );
     
@@ -35,8 +32,9 @@ CREATE TABLE IF NOT EXISTS `Order` (
 CREATE TABLE IF NOT EXISTS `OrderItems` (
     `id_order_items` INT(11) NOT NULL,
     `id_item` INT(10) NOT NULL,
-    `item_quantity` INT(10) NOT NULL,
+    `id_order` INT(10) NOT NULL,
     PRIMARY KEY (`id_order_items`),
-    FOREIGN KEY (`id_item`) REFERENCES `Items` (`item_id`)
+    FOREIGN KEY (`id_item`) REFERENCES `Items` (`item_id`),
+    FOREIGN KEY (`id_order`) REFERENCES `Order` (`order_id`)
 );
 

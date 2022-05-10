@@ -1,24 +1,20 @@
-20220509 16:34:27 INFO  [main] ims.IMS IMS.java35 - Welcome to the Inventory Management System!
-20220509 16:34:27 INFO  [main] ims.IMS IMS.java40 - Which entity would you like to use?
-20220509 16:34:27 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20220509 16:34:27 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20220509 16:34:27 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20220509 16:34:27 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20220509 16:34:30 INFO  [main] ims.IMS IMS.java70 - What would you like to do with item:
-20220509 16:34:30 INFO  [main] controller.Action Action.java38 - CREATE: To save a new entity into the database
-20220509 16:34:30 INFO  [main] controller.Action Action.java38 - READ: To read an entity from the database
-20220509 16:34:30 INFO  [main] controller.Action Action.java38 - UPDATE: To change an entity already in the database
-20220509 16:34:30 INFO  [main] controller.Action Action.java38 - DELETE: To remove an entity from the database
-20220509 16:34:30 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
-20220509 16:34:32 INFO  [main] controller.ItemController ItemController.java48 - Please enter the item id
-20220509 16:34:33 INFO  [main] controller.ItemController ItemController.java50 - Please enter name of item:
-20220509 16:34:39 INFO  [main] controller.ItemController ItemController.java52 - Please enter the price of the item
-20220509 16:34:43 DEBUG [main] dao.ItemsDAO ItemsDAO.java75 - java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-20220509 16:34:43 ERROR [main] dao.ItemsDAO ItemsDAO.java76 - Access denied for user 'root'@'localhost' (using password: YES)
-20220509 16:34:43 INFO  [main] controller.ItemController ItemController.java55 - Item created
-20220509 16:34:43 INFO  [main] ims.IMS IMS.java70 - What would you like to do with item:
-20220509 16:34:43 INFO  [main] controller.Action Action.java38 - CREATE: To save a new entity into the database
-20220509 16:34:43 INFO  [main] controller.Action Action.java38 - READ: To read an entity from the database
-20220509 16:34:43 INFO  [main] controller.Action Action.java38 - UPDATE: To change an entity already in the database
-20220509 16:34:43 INFO  [main] controller.Action Action.java38 - DELETE: To remove an entity from the database
-20220509 16:34:43 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20220510 09:21:36 INFO  [main] ims.IMS IMS.java35 - Welcome to the Inventory Management System!
+20220510 09:21:36 INFO  [main] ims.IMS IMS.java40 - Which entity would you like to use?
+20220510 09:21:36 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
+20220510 09:21:36 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
+20220510 09:21:36 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
+20220510 09:21:36 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
+20220510 09:21:39 INFO  [main] ims.IMS IMS.java70 - What would you like to do with item:
+20220510 09:21:39 INFO  [main] controller.Action Action.java38 - CREATE: To save a new entity into the database
+20220510 09:21:39 INFO  [main] controller.Action Action.java38 - READ: To read an entity from the database
+20220510 09:21:39 INFO  [main] controller.Action Action.java38 - UPDATE: To change an entity already in the database
+20220510 09:21:39 INFO  [main] controller.Action Action.java38 - DELETE: To remove an entity from the database
+20220510 09:21:39 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20220510 09:21:41 DEBUG [main] dao.ItemsDAO ItemsDAO.java45 - java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
+20220510 09:21:41 ERROR [main] dao.ItemsDAO ItemsDAO.java46 - Access denied for user 'root'@'localhost' (using password: YES)
+20220510 09:21:41 INFO  [main] ims.IMS IMS.java70 - What would you like to do with item:
+20220510 09:21:41 INFO  [main] controller.Action Action.java38 - CREATE: To save a new entity into the database
+20220510 09:21:41 INFO  [main] controller.Action Action.java38 - READ: To read an entity from the database
+20220510 09:21:41 INFO  [main] controller.Action Action.java38 - UPDATE: To change an entity already in the database
+20220510 09:21:41 INFO  [main] controller.Action Action.java38 - DELETE: To remove an entity from the database
+20220510 09:21:41 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection

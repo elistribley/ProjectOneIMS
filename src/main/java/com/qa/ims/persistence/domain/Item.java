@@ -7,6 +7,7 @@ public class Item {
 	private Long itemId;
 	private String itemName;
 	private Double itemPrice;
+	//CONSTRUCTORS
 	public Item(Long itemId, String itemName, Double itemPrice) {
 		super();
 		this.itemId = itemId;
@@ -16,6 +17,7 @@ public class Item {
 	public Item() {
 		super();
 	}
+	//GETTERS AND SETTERS
 	public Long getItemId() {
 		return itemId;
 	}
@@ -34,6 +36,7 @@ public class Item {
 	public void setItemPrice(Double itemPrice) {
 		this.itemPrice = itemPrice;
 	}
+	//HASHCODE AND EQUALS
 	@Override
 	public int hashCode() {
 		return Objects.hash(itemId, itemName, itemPrice);

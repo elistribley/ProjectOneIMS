@@ -12,7 +12,7 @@ import com.qa.ims.utils.Utils;
 
 /**
  * Takes in Items details for CRUD functionality
- * @param <Item>
+ * 
  *
  */
 public class ItemController implements CrudController<Item> {
@@ -45,13 +45,11 @@ public class ItemController implements CrudController<Item> {
 	 */
 	@Override
 	public Item create() {
-		LOGGER.info("Please enter the item id");
-		Long itemId = utils.getLong();
 		LOGGER.info("Please enter name of item:");
 		String itemName = utils.getString();
 		LOGGER.info("Please enter the price of the item");
 		Double itemPrice = utils.getDouble();
-		Item items = itemDAO.create(new Item(itemId, itemName, itemPrice));
+		Item items = itemDAO.create(new Item(itemName, itemPrice));
 		LOGGER.info("Item created");
 		return items;
 	}

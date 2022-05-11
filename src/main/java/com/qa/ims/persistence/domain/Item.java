@@ -14,6 +14,13 @@ public class Item {
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 	}
+	
+	public Item(String itemName, Double itemPrice) {
+		super();
+		this.itemName = itemName;
+		this.itemPrice = itemPrice;
+	}
+
 	public Item() {
 		super();
 	}
@@ -36,6 +43,15 @@ public class Item {
 	public void setItemPrice(Double itemPrice) {
 		this.itemPrice = itemPrice;
 	}
+	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Item [itemId=" + itemId + ", itemName=" + itemName + ", itemPrice=" + itemPrice + "]";
+	}
+
 	//HASHCODE AND EQUALS
 	@Override
 	public int hashCode() {

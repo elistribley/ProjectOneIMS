@@ -63,6 +63,14 @@ public class Order {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+	
+	
+	
+	@Override
+	public String toString() { 
+		//CALCULATE PRICES HERE
+		return "Order [orderId=" + orderId + ", customerId=" + customerId + ", items=" + items + "]";
+	}
 
 	@Override
 	public int hashCode() {

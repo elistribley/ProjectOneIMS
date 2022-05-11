@@ -127,8 +127,8 @@ public class OrderControllerTest {
 		
 		assertEquals(2L, this.orderController.update());
 		
-		Mockito.verify(utils, Mockito.times(2)).getLong();
-		Mockito.verify(utils, Mockito.times(1)).getString();
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		
 	}
 	
 	@After

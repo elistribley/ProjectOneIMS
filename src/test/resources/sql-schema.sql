@@ -33,7 +33,7 @@ CREATE TABLE Items(
 
 CREATE TABLE  OrderItems(
     `id_order_items` INT(10) NOT NULL AUTO_INCREMENT,
-    `order_id` INT(10) NOT NULL,
+    `id_order` INT(10) NOT NULL,
     `item_id` INT(10) NOT NULL,
 	FOREIGN KEY (order_id) REFERENCES Orders(order_id),
 	FOREIGN KEY (item_id) REFERENCES Items(item_id),

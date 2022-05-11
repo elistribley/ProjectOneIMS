@@ -66,7 +66,7 @@ public class ItemsDAO implements Dao<Item> {
 	public Item create(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO Items(item_id, item_name, item_price) VALUES (?, ?, ?)");) {
+						.prepareStatement("INSERT INTO Items(item_name, item_price) VALUES (?, ?)");) {
 			statement.setString(1, item.getItemName());
 			statement.setDouble(2, item.getItemPrice());
 			statement.executeUpdate();
@@ -78,9 +78,10 @@ public class ItemsDAO implements Dao<Item> {
 		return null;
 	}
 	//READ BY ID
+	@Override
 	public Item read(Long id) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
-				PreparedStatement statement = connection.prepareStatement("SELECT * FROM items WHERE item_id = ?");) {
+				PreparedStatement statement = connection.prepareStatement("SELECT * FROM Items WHERE item_id=?");) {
 			statement.setLong(1, id);
 			try (ResultSet resultSet = statement.executeQuery();) {
 				resultSet.next();
@@ -98,7 +99,7 @@ public class ItemsDAO implements Dao<Item> {
 	public Item update(Item item) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("UPDATE items SET item_name = ?, item_price = ? WHERE item_id = ?");) {
+						.prepareStatement("UPDATE Items SET item_name = ?, item_price = ? WHERE item_id = ?");) {
 			statement.setLong(3, item.getItemId());
 			statement.setString(1, item.getItemName());
 			statement.setDouble(2, item.getItemPrice());		

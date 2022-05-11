@@ -45,6 +45,7 @@ public class OrderController implements CrudController<Order> {
 		LOGGER.info("Yes or No?");
 		
 		String newItem = utils.getString();
+		//CREATE IF STATEMENT FOR ADDING ITEM
 		addItem(newItem);
 		
 		return order;

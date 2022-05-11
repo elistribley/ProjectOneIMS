@@ -48,11 +48,11 @@ public class CustomerDAO implements Dao<Customer> {
 		}
 		return new ArrayList<>();
 	}
-
+	
 	public Customer readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM customers ORDER BY id DESC LIMIT 1");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM Customers ORDER BY id DESC LIMIT 1");) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -71,7 +71,7 @@ public class CustomerDAO implements Dao<Customer> {
 	public Customer create(Customer customer) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				PreparedStatement statement = connection
-						.prepareStatement("INSERT INTO customers(first_name, surname, address) VALUES (?, ?, ?)");) {
+						.prepareStatement("INSERT INTO Customers(first_name, surname, address) VALUES (?, ?, ?)");) {
 			statement.setString(1, customer.getFirstName());
 			statement.setString(2, customer.getSurname());
 			statement.setString(3, customer.getAddress());

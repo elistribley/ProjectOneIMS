@@ -54,7 +54,7 @@ public class OrderController implements CrudController<Order> {
 
 	public Order addItem(String newItem) {
 
-		if (newItem.toLowerCase().equals("yes")) {
+		if (newItem=="yes") {
 
 			boolean flag = true;
 

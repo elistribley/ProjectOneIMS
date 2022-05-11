@@ -28,10 +28,10 @@ public class CustomerControllerTest {
 
 	@InjectMocks
 	private CustomerController controller;
-
+//ADDED ADDRESS
 	@Test
 	public void testCreate() {
-		final String F_NAME = "barry", L_NAME = "scott", ADD = "64 Zoo Lane";
+		final String F_NAME = "jordan", L_NAME = "harrison", ADD = "64 Zoo Lane";
 		final Customer created = new Customer(F_NAME, L_NAME, ADD);
 
 		Mockito.when(utils.getString()).thenReturn(F_NAME, L_NAME, ADD);
@@ -39,7 +39,7 @@ public class CustomerControllerTest {
 
 		assertEquals(created, controller.create());
 
-		Mockito.verify(utils, Mockito.times(2)).getString();
+		Mockito.verify(utils, Mockito.times(3)).getString();
 		Mockito.verify(dao, Mockito.times(1)).create(created);
 	}
 
@@ -66,13 +66,13 @@ public class CustomerControllerTest {
 		assertEquals(updated, this.controller.update());
 
 		Mockito.verify(this.utils, Mockito.times(1)).getLong();
-		Mockito.verify(this.utils, Mockito.times(2)).getString();
+		Mockito.verify(this.utils, Mockito.times(3)).getString();
 		Mockito.verify(this.dao, Mockito.times(1)).update(updated);
 	}
 
 	@Test
 	public void testDelete() {
-		final long ID = 1L;
+		final Long ID = 1L;
 
 		Mockito.when(utils.getLong()).thenReturn(ID);
 		Mockito.when(dao.delete(ID)).thenReturn(1);

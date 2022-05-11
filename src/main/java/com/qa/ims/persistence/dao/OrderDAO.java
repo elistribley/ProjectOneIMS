@@ -145,7 +145,7 @@ public class OrderDAO implements Dao<Order> {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("UPDATE Order SET id_customer=? WHERE order_id=?");
-			return read(order.getOrderId());
+			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -158,7 +158,7 @@ public class OrderDAO implements Dao<Order> {
 	public int delete(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("DELETE FROM Orders(order_id) VALUES (?)");
+			return statement.executeUpdate("DELETE FROM Orders WHERE order_id=?");
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -169,7 +169,7 @@ public class OrderDAO implements Dao<Order> {
 	public int deleteOrderLines(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("DELETE FROM order_items WHERE order_id=?)");
+			return statement.executeUpdate("DELETE FROM OrderItems WHERE order_id=?)");
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -188,6 +188,10 @@ public class OrderDAO implements Dao<Order> {
 		return 0;
 	}
 	
-	
+//	private List<Item> calculatePrices(){
+//		for (Item items : )
+//		
+//		
+//	}
 
 }

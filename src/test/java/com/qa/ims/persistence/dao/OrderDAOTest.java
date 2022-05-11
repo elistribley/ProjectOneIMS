@@ -28,11 +28,13 @@ public class OrderDAOTest {
 	@BeforeClass
 	public static void init() {
 		DBUtils.connect("root");
+		System.out.println("Before class!");
 	}
 
 	@Before
 	public void setup() {
 		DBUtils.getInstance().init("src/test/resources/sql-schema.sql", "src/test/resources/sql-data.sql");
+		System.out.println("Before method!");
 	}
 
 	@Test
@@ -70,14 +72,15 @@ public class OrderDAOTest {
 	public void deleteOrderTest() {
 		final Long orderId = 1L;
 		assertEquals(2, orderDAO.delete(orderId));
+		System.out.println(orderId);
 	}
 
 	@Test
 	public void deleteLineTest() {
-		final long orderId = 1L;
-		final long itemId = 4L;
+		final Long orderId = 1L;
+		final Long itemId = 2L;
 		assertEquals(1, orderDAO.deleteOrderItems(orderId, itemId));
-
+		System.out.println("");
 	}
 	
 	@Test
@@ -108,6 +111,7 @@ public class OrderDAOTest {
 		expected.add(order1);
 		expected.add(order2);
 		assertEquals(expected, orderDAO.readAll());
+		System.out.println(expected);
 } 
 	@After
 	public void after() {

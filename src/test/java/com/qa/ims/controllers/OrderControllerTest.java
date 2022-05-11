@@ -13,8 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
-
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -57,10 +58,11 @@ public class OrderControllerTest {
 		when(orderDAO.create(created)).thenReturn(created);
 
 		assertEquals(created, orderController.create());
-
+		Mockito.verify(utils, Mockito.times(1)).getString();
+		Mockito.verify(orderDAO, times(1)).create(any(Order.class));
 	}
 	@BeforeClass
-	public void beforeClass() {
+	public static void beforeClass() {
 		System.out.println("Before Class!");
 	}
 	
@@ -74,7 +76,7 @@ public class OrderControllerTest {
 	public void testReadAll() {
 		List<Order> orders = new ArrayList<>();
 		List<Item> items = new ArrayList<>();
-		orders.add(new Order(1l, 1L, items));
+		orders.add(new Order(1L, 1L, items));
 
 		when(orderDAO.readAll()).thenReturn(orders);
 
@@ -85,16 +87,16 @@ public class OrderControllerTest {
 
 	@Test
 	public void testDelete() {
-		final long ID = 1L;
-		when(utils.getLong()).thenReturn(ID);
-		when(orderDAO.delete(ID)).thenReturn(1);
+		final Long ID = 1L;
+
+		Mockito.when(utils.getLong()).thenReturn(ID);
+		Mockito.when(orderDAO.delete(ID)).thenReturn(1);
 
 		assertEquals(1L, this.orderController.delete());
 
-		verify(utils, times(1)).getLong();
-		verify(orderDAO, times(1)).delete(ID);
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		Mockito.verify(orderDAO, Mockito.times(2)).delete(ID);
 	}
-
 	@Test
 	public void testUpdate() {
 		
@@ -108,7 +110,7 @@ public class OrderControllerTest {
 	}
 	
 	@AfterClass
-	public void afterClass() {
+	public static void afterClass() {
 		System.out.println("After Class!");
 	}
 	

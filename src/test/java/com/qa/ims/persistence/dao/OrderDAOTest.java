@@ -10,15 +10,24 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.qa.ims.utils.DBUtils;
+import com.qa.ims.utils.Utils;
+import com.qa.ims.controller.OrderController;
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.persistence.domain.OrderItem;
 
 
 public class OrderDAOTest {
+	
+	
+	
+	
 	private Item item1 = new Item(1L, "Comic Book", 8.99);
 	private Item item2 = new Item(2L, "PS5 Controller", 45.99);
 
@@ -48,7 +57,7 @@ public class OrderDAOTest {
 	public void readLatestTest() {
 		List<Item> items = new ArrayList<>();
 		items.add(item1);
-		final Order expected = new Order(2l, 1l, items);
+		final Order expected = new Order(1L, 1L, items);
 		assertEquals(expected, orderDAO.readLatest());
 	}
 
@@ -56,14 +65,14 @@ public class OrderDAOTest {
 	public void readTest() {
 		List<Item> items = new ArrayList<>();
 		items.add(item2);
-		final Long orderId = 2L;
-		final Order order = new Order(2L, 1L, items);
+		final Long orderId = 1L;
+		final Order order = new Order(1L, 1L, items);
 		assertEquals(order, orderDAO.read(orderId));
 	}
 
 	@Test
 	public void deleteTest() {
-		final Order created = new Order(2L, 2L);
+		final Order created = new Order(1L, 1L);
 		orderDAO.create(created);
 		assertEquals(1, orderDAO.delete(1L));
 	}
@@ -71,23 +80,23 @@ public class OrderDAOTest {
 	@Test
 	public void deleteOrderTest() {
 		final Long orderId = 1L;
-		assertEquals(2, orderDAO.delete(orderId));
+		assertEquals(1L, orderDAO.delete(orderId));
 		System.out.println(orderId);
 	}
 
 	@Test
 	public void deleteLineTest() {
-		final Long orderId = 1L;
-		final Long itemId = 2L;
-		assertEquals(1, orderDAO.deleteOrderItems(orderId, itemId));
-		System.out.println("");
+		final Long orderId = 21L;
+		final Long itemId = 1L;
+		assertEquals(2, orderDAO.deleteOrderItems(orderId, itemId));
+	
 	}
 	
 	@Test
 	public void updateTest() {
 		List<Item> items = new ArrayList<>();
 		items.add(item2);
-		final Order updated = new Order(2L, 2L, items);
+		final Order updated = new Order(1L, 1L, items);
 		
 		assertEquals(updated, orderDAO.update(updated));
 	}
@@ -95,21 +104,18 @@ public class OrderDAOTest {
 	
 	@Test 
 	public void addItemTest() {
-		final OrderItem orderItem = new OrderItem(1L, 3L, 1L);
+		final OrderItem orderItem = new OrderItem(1L, 1L, 1L);
 		assertEquals(orderItem, orderDAO.addItem(orderItem));
 	}
 	
 	@Test
 	public void readAllTest() {
-		List<Item> items1 = new ArrayList<>();
-		List<Item> items2 = new ArrayList<>();
+		List<Item> items = new ArrayList<>();
+		
 		List<Order> expected = new ArrayList<>();
-		final Order order1 = new Order(1L, 1L, items1);
-		final Order order2 = new Order(2L, 1L, items2);
-		items1.add(item1);
-		items2.add(item2);
+		final Order order1 = new Order(1L, 1L, items);	
+		items.add(item1);	
 		expected.add(order1);
-		expected.add(order2);
 		assertEquals(expected, orderDAO.readAll());
 		System.out.println(expected);
 } 

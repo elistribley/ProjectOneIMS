@@ -87,21 +87,48 @@ public class OrderControllerTest {
 
 	@Test
 	public void testDelete() {
-		final Long ID = 1L;
+		final Long id = 1L;
 
-		Mockito.when(utils.getLong()).thenReturn(ID);
-		Mockito.when(orderDAO.delete(ID)).thenReturn(1);
-
+		Mockito.when(utils.getLong()).thenReturn(id);
+		Mockito.when(orderDAO.delete(id)).thenReturn(1);
+		
 		assertEquals(1L, this.orderController.delete());
 
 		Mockito.verify(utils, Mockito.times(1)).getLong();
-		Mockito.verify(orderDAO, Mockito.times(2)).delete(ID);
+		Mockito.verify(orderDAO, Mockito.times(2)).delete(id);
 	}
 	@Test
 	public void testUpdate() {
+		Long orderId = null;
+		Order currentOrder = null;
+//		Long customerId = 1L;
+//		String selection = "yes";
 		
 		
-
+		Mockito.when(utils.getLong()).thenReturn(orderId);
+		
+		
+		currentOrder = orderDAO.read(orderId);
+		orderDAO.update(new Order(orderId));
+//		assertEquals(1L, this.orderController.update());
+		
+//		verify(orderDAO, times(1));
+		
+		Mockito.verify(utils, Mockito.times(1)).getLong();
+		
+	}
+	
+	public void testAddItem() {
+		Long itemId = 1L;
+		Long orderId = 2L;
+		
+		Mockito.when(utils.getLong()).thenReturn(itemId);
+		Mockito.when(utils.getLong()).thenReturn(orderId);
+		
+		assertEquals(2L, this.orderController.update());
+		
+		Mockito.verify(utils, Mockito.times(2)).getLong();
+		Mockito.verify(utils, Mockito.times(1)).getString();
 	}
 	
 	@After

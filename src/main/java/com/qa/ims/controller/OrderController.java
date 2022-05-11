@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.qa.ims.persistence.dao.ItemsDAO;
 import com.qa.ims.persistence.dao.OrderDAO;
+import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.persistence.domain.OrderItem;
@@ -32,14 +33,7 @@ public class OrderController implements CrudController<Order> {
 	}
 
 	
-	@Override
-	public List<Order> readAll() {
-		List<Order> orders = (List<Order>) orderDAO;
-		for (Order order : orders) {
-			LOGGER.info(order);
-		}
-		return orders;
-	}
+
 
 	
 	@Override
@@ -144,4 +138,21 @@ public class OrderController implements CrudController<Order> {
 		return orderDAO.delete(orderId);
 	}
 
+
+
+
+
+	@Override
+	public List<Order> readAll() {
+		List<Order> orders = orderDAO.readAll();
+		for (Order order : orders) {
+			LOGGER.info(order);
+		}
+		return orders;
+	}
+
+
+
+
+	
 }

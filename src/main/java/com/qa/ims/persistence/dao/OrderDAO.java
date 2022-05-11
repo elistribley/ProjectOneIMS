@@ -42,8 +42,7 @@ public class OrderDAO implements Dao<Order> {
 	public List<Item> readId(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement
-						.executeQuery("SELECT * FROM (id_order_items) WHERE order_id VALUES (?)")) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM (id_order_items) WHERE order_id VALUES (?)")) {
 			List<Item> items = new ArrayList<Item>();
 			while (resultSet.next()) {
 				items.add(itemDAO.read(resultSet.getLong("item_id")));
@@ -60,7 +59,7 @@ public class OrderDAO implements Dao<Order> {
 	public List<Order> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM Order");) {
 			List<Order> orders = new ArrayList<>();
 			while (resultSet.next()) {
 				orders.add(modelFromResultSet(resultSet));
@@ -76,7 +75,7 @@ public class OrderDAO implements Dao<Order> {
 	public Order readLatest() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY order_id DESC LIMIT 1");) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM ORDER BY order_id DESC LIMIT 1");) {
 			resultSet.next();
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -130,7 +129,7 @@ public class OrderDAO implements Dao<Order> {
 	public Order read(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM (Orders) WHERE order_id VALUES (?)")) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM Order WHERE order_id=?)")) {
 			return modelFromResultSet(resultSet);
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -145,7 +144,7 @@ public class OrderDAO implements Dao<Order> {
 	public Order update(Order order) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("UPDATE orders SET id_customer = ?, item_id = ? WHERE order_id VALUES (?)");
+			statement.executeUpdate("UPDATE Order SET id_customer=? WHERE order_id=?");
 			return read(order.getOrderId());
 		} catch (Exception e) {
 			LOGGER.debug(e);
@@ -159,7 +158,7 @@ public class OrderDAO implements Dao<Order> {
 	public int delete(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("DELETE FROM orders WHERE order_id VALUES (?)");
+			return statement.executeUpdate("DELETE FROM Orders(order_id) VALUES (?)");
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -170,7 +169,7 @@ public class OrderDAO implements Dao<Order> {
 	public int deleteOrderLines(Long orderId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("DELETE FROM order_items WHERE order_id VALUES (?)");
+			return statement.executeUpdate("DELETE FROM order_items WHERE order_id=?)");
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());
@@ -181,7 +180,7 @@ public class OrderDAO implements Dao<Order> {
 	public int deleteOrderItems(Long orderId, Long itemId) {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();) {
-			return statement.executeUpdate("DELETE FROM OrderItems WHERE order_id = ?, item_id = ? WHERE order_items_id VALUES (?)");
+			return statement.executeUpdate("DELETE FROM OrderItems WHERE order_id=?, item_id=?");
 		} catch (Exception e) {
 			LOGGER.debug(e);
 			LOGGER.error(e.getMessage());

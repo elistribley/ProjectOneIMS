@@ -51,7 +51,7 @@ public class OrderController implements CrudController<Order> {
 	
 		
 
-	public Order addItem(String newItem) {
+	public Order addItem() {
 
 				LOGGER.info("Please enter an order id");
 				Long orderId = utils.getLong();
@@ -63,28 +63,29 @@ public class OrderController implements CrudController<Order> {
 					
 				return orders;
 	}
-	//Spoke with richard about usig a add or remove method
+	//Spoke with richard about using a add or remove method
 	@Override
 	public Order update() {
-		LOGGER.info("Please enter the id of the order you wish to update");
-		Long orderId = utils.getLong();
-		LOGGER.info("Would you like to add or remove an item from an order?");
-		String addOrDelete = utils.getString();
-		if (addOrDelete.equals("add")) {
-			LOGGER.info("Please enter the id of the item you wish to add to the order");
-			Long itemId = utils.getLong();			
-			Order orders = orderDAO.addItem(orderId, itemId);
-			LOGGER.info("Order Updated");
-			return orders;
-		} else if (addOrDelete.equals("remove")) {
-			LOGGER.info("Please enter the id of the item you wish to remove from the order");
-			Long itemId = utils.getLong();
-			Order orders = orderDAO.deleteOrderItems(orderId, itemId);
-			LOGGER.info("Order updated");
-			return orders;
+	String addOrRemove = "";
+	LOGGER.info("Please enter the id of the order you wish to update");
+	Long orderId = utils.getLong();
+	LOGGER.info("Would you like to add or remove an item from an order?");
+	addOrRemove = utils.getString();
+		if (addOrRemove.equals("add")) {
+	LOGGER.info("Please enter the id of the item you wish to add to the order");
+	Long itemId = utils.getLong();
+	Order orders = orderDAO.addItem(orderId, itemId);
+	LOGGER.info("Order Updated");
+	return orders;
+		} else if (addOrRemove.equals("remove")) {
+	LOGGER.info("Please enter the id of the item you wish to remove from the order");
+	Long itemId = utils.getLong();
+	Order orders = orderDAO.deleteOrderItems(orderId, itemId);
+	LOGGER.info("Order updated");
+	return orders;
 		} else {
-			System.out.println("Please enter either 'add' or 'remove'");
-		}
+	System.out.println("Please enter either add or remove");
+	}
 		return orderDAO.read(orderId);
 	}
 	
@@ -98,13 +99,13 @@ public class OrderController implements CrudController<Order> {
 		return orderDAO.delete(orderId);
 	}
 
-//	public int deleteItem() {
-//		LOGGER.info("Please enter the id of the order you would like to delete");
-//		Long orderId = utils.getLong();
-//		LOGGER.info("Please enter the item id of the item you would like to delete");
-//		Long itemId = utils.getLong();
-//		return orderDAO.deleteOrderItems(orderId, itemId);
-//	}
+	public Order deleteItem() {
+		LOGGER.info("Please enter the id of the order you would like to delete");
+		Long orderId = utils.getLong();
+		LOGGER.info("Please enter the item id of the item you would like to delete");
+		Long itemId = utils.getLong();
+		return orderDAO.deleteOrderItems(orderId, itemId);
+	}
 
 
 	@Override

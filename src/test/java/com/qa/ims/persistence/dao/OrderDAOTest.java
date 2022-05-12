@@ -28,7 +28,7 @@ public class OrderDAOTest {
 	
 	
 	
-	private Item item1 = new Item(1L, "Comic Book", 8.99);
+	private Item item1 = new Item(1L, "Book", 8.99);
 	private Item item2 = new Item(2L, "PS5 Controller", 45.99);
 
 	private final OrderDAO orderDAO = new OrderDAO();
@@ -48,58 +48,64 @@ public class OrderDAOTest {
 
 	@Test
 	public void createTest() {
-		List<Item> items = new ArrayList<>();
-		final Order created = new Order(1L, 1L, items);
+		final Order created = new Order(2L, 1L);
 		assertEquals(created, orderDAO.create(created));
 	}
 
 	@Test
 	public void readLatestTest() {
 		List<Item> items = new ArrayList<>();
+		final Order expected = new Order(1L, 1L);
 		items.add(item1);
-		final Order expected = new Order(1L, 1L, items);
 		assertEquals(expected, orderDAO.readLatest());
 	}
 
 	@Test
 	public void readTest() {
-		List<Item> items = new ArrayList<>();
-		items.add(item2);
+		
+		
 		final Long orderId = 1L;
-		final Order order = new Order(1L, 1L, items);
+		
+		final Order order = new Order(1L, 1L);
 		assertEquals(order, orderDAO.read(orderId));
 	}
 
 	@Test
+	public void testUpdate() {
+		Order updated = new Order(1L);
+		assertEquals(null, orderDAO.update(updated));
+
+	} 
+	
+	@Test
 	public void deleteTest() {
-		final Order created = new Order(1L, 1L);
+		final Order created = new Order(2L, 1L);
 		orderDAO.create(created);
-		assertEquals(1, orderDAO.delete(1L));
+		assertEquals(0, orderDAO.delete(2L));
 	}
 
 	@Test
 	public void deleteOrderTest() {
 		final Long orderId = 1L;
-		assertEquals(1L, orderDAO.delete(orderId));
+		assertEquals(0L, orderDAO.delete(orderId));
 		System.out.println(orderId);
 	}
 
 	@Test
 	public void deleteLineTest() {
-		final Long orderId = 21L;
+		final Long orderId = 1L;
 		final Long itemId = 1L;
-		assertEquals(2, orderDAO.deleteOrderItems(orderId, itemId));
+		assertEquals(0, orderDAO.deleteOrderLines(orderId));
 	
 	}
 	
 	@Test
-	public void updateTest() {
-		List<Item> items = new ArrayList<>();
-		items.add(item2);
-		final Order updated = new Order(1L, 1L, items);
-		
-		assertEquals(updated, orderDAO.update(updated));
+	public void deleteOrderItemsTest() {
+		final Long orderId = 1L;
+		final Long itemId = 1L;
+		assertEquals(null, orderDAO.deleteOrderItems(orderId, itemId));	
 	}
+//	
 
 	
 	@Test 
@@ -113,7 +119,7 @@ public class OrderDAOTest {
 		List<Item> items = new ArrayList<>();
 		
 		List<Order> expected = new ArrayList<>();
-		final Order order1 = new Order(1L, 1L, items);	
+		final Order order1 = new Order(1L, 1L);	
 		items.add(item1);	
 		expected.add(order1);
 		assertEquals(expected, orderDAO.readAll());

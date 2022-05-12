@@ -16,7 +16,7 @@ import com.qa.ims.utils.DBUtils;
 
 public class ItemsDAOTest {
 
-	private final ItemsDAO DAO = new ItemsDAO();
+	private final ItemsDAO dao = new ItemsDAO();
 	
 	@BeforeClass
 	public static void initsetup() {
@@ -32,41 +32,46 @@ public class ItemsDAOTest {
 
 	@Test
 	public void testCreate() {
-		final Item created = new Item(1L, "Comic book", 8.99);
-		assertEquals(created, DAO.create(created));
+		Item created = new Item(2L, "Book", 8.99);
+		assertEquals(created, dao.create(created));
 	}
 
 	@Test
 	public void testReadAll() {
 		List<Item> expected = new ArrayList<>();
-		expected.add(new Item(1L, "Comic book", 8.99));
-		assertEquals(expected, DAO.readAll());
+		expected.add(new Item(1L, "Book", 8.99));
+		assertEquals(expected, dao.readAll());
 	}
 
 	@Test
 	public void testReadLatest() {
-		assertEquals(new Item(1L, "Comic book", 8.99), DAO.readLatest());
+		assertEquals(new Item(1L, "Book", 8.99), dao.readLatest());
 	}
 
 	@Test
 	public void testRead() {
-		final Long ID = 1L;
-		assertEquals(new Item(1L, "Comic book", 8.99), DAO.read(ID));
+		Long id = 1L;
+		assertEquals(new Item(1L, "Book", 8.99), dao.read(id));
 	}
 
 	@Test
 	public void testUpdate() {
-		final Item updated = new Item(1L, "Comic book", 8.99);
-		assertEquals(updated, DAO.update(updated));
+		Item updated = new Item(1L, "Book", 8.99);
+		assertEquals(updated, dao.update(updated));
 
 	}
 
 	@Test
 	public void testDelete() {
-		assertEquals(1, DAO.delete(1L));
+		assertEquals(1, dao.delete(1L));
+	}
+	@Test
+	public void testDeleteOrderLines() {
+		assertEquals(1, dao.delete(1L));
 	}
 	@After
 	public void after() {
 		System.out.println("At the end!");
 	}
+	
 }

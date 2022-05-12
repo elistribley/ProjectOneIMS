@@ -18,15 +18,15 @@ public class OrderItemsTest {
 		testOrderItems1.setOrderItemsId(1L);;
 		testOrderItems1.setOrderId(2L);
 		testOrderItems1.setItemId(3L);		
-		assertFalse(testOrderItems1.equals(testOrderItems2));
+		assertTrue(testOrderItems1.equals(testOrderItems1));
 	}
 	@Test
 	public void testGetters() {
 		long orderId = 1L;
-		long itemId = 2L;
+		long itemId = 1L;
 		long orderItems = 1L;
 		assertTrue(testOrderItems1.getOrderId().equals(orderId));
-		assertTrue(testOrderItems2.getItemId().equals(itemId));
+		assertTrue(testOrderItems1.getItemId().equals(itemId));
 		assertTrue(testOrderItems1.getOrderItemsId().equals(orderItems));
 	}
 	@Test

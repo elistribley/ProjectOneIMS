@@ -62,6 +62,12 @@ public class OrderItem{
 		return Objects.equals(itemId, other.itemId) && Objects.equals(orderId, other.orderId)
 				&& Objects.equals(orderItemsId, other.orderItemsId);
 	}
+
+
+	@Override
+	public String toString() {
+		return "OrderItem [orderItemsId=" + orderItemsId + ", orderId=" + orderId + ", itemId=" + itemId + "]";
+	}
 	
 	
 	

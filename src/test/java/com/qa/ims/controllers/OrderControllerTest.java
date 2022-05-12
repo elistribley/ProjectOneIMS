@@ -59,7 +59,7 @@ public class OrderControllerTest {
 
 		assertEquals(created, orderController.create());
 		Mockito.verify(utils, Mockito.times(1)).getString();
-		Mockito.verify(orderDAO, times(1)).create(any(Order.class));
+		Mockito.verify(orderDAO, times(1)).create(created);
 	}
 	@BeforeClass
 	public static void beforeClass() {
@@ -115,7 +115,6 @@ public class OrderControllerTest {
 //		verify(orderDAO, times(1));
 		
 		Mockito.verify(utils, Mockito.times(1)).getLong();
-		
 	}
 	
 	public void testAddItem() {
@@ -127,7 +126,7 @@ public class OrderControllerTest {
 		
 		assertEquals(2L, this.orderController.update());
 		
-		Mockito.verify(utils, Mockito.times(1)).getLong();
+		Mockito.verify(utils, Mockito.times(2)).getLong();
 		
 	}
 	

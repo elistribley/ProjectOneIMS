@@ -38,97 +38,56 @@ public class OrderController implements CrudController<Order> {
 	
 	@Override
 	public Order create() {
-		LOGGER.info("Please enter your customer ID");
-		Long customerId = utils.getLong();
-		Order order = orderDAO.create(new Order(customerId));
-		LOGGER.info("Would you like to add an item to your order?");
-		LOGGER.info("Yes or No?");
 		
-		String newItem = utils.getString();
-		//CREATE IF STATEMENT FOR ADDING ITEM
-		addItem(newItem);
+			LOGGER.info("Please enter a order id");
+			Long id = utils.getLong();
+			LOGGER.info("Please enter a customer id");
+			Long customerId = utils.getLong();
+			Order order = orderDAO.create(new Order(id, customerId));
+			LOGGER.info("order created");
+			return order;
+		}
 		
-		return order;
-		
-	}
+	
 		
 
 	public Order addItem(String newItem) {
 
-		if (newItem=="yes") {
-
-			boolean flag = true;
-
-			while (flag) {
-				LOGGER.info("Please enter a item id");
-				Long itemId = utils.getLong();
 				LOGGER.info("Please enter an order id");
 				Long orderId = utils.getLong();
-				orderDAO.addItem(new OrderItem(null, itemId, orderId));
-				LOGGER.info("Item successfully added to order");
-				LOGGER.info("Would you like to add another item?");
-				LOGGER.info("Enter yes or no");
-				String addAnother = utils.getString();
+				LOGGER.info("Please enter the id of the item you would like to add?");
+				Long itemId = utils.getLong();
+				Order orders = orderDAO.addItem(orderId, itemId);
+				LOGGER.info("Order updated");
 
-				if (addAnother.toLowerCase().equals("no")) {
-					flag = false;
-				}
-			}
-			return null;
-
-		} else {
-			LOGGER.info("Bye");
-			return null;
-		}
+					
+				return orders;
 	}
+	//Spoke with richard about usig a add or remove method
 	@Override
 	public Order update() {
-		Long orderId = null;
-		Order currentOrder = null;
-		Long customerId = null;
-		do {
-			LOGGER.info("Enter the id of the order you would like to update.");
-			orderId = utils.getLong();
-			LOGGER.info("Please enter a new customer id");
-			customerId = utils.getLong();
-			orderDAO.update(new Order(orderId, customerId));
+		LOGGER.info("Please enter the id of the order you wish to update");
+		Long orderId = utils.getLong();
+		LOGGER.info("Would you like to add or remove an item from an order?");
+		String addOrDelete = utils.getString();
+		if (addOrDelete.equals("add")) {
+			LOGGER.info("Please enter the id of the item you wish to add to the order");
+			Long itemId = utils.getLong();			
+			Order orders = orderDAO.addItem(orderId, itemId);
 			LOGGER.info("Order Updated");
-			currentOrder = orderDAO.read(orderId);
-		} while (currentOrder == null);
-		boolean exit = false;
-		//GOT THIS IDEA FROM ONLINE -- SOURCE
-		do {
-			currentOrder = orderDAO.read(orderId);
-			LOGGER.info(currentOrder.toString());
-			LOGGER.info("Would you like to add or delete an item? Enter 'add', 'delete' or 'exit'.");
-			String selection = utils.getString().toLowerCase();
-			Long itemID;
-			switch (selection) {
-			case "delete":
-				LOGGER.info("Enter item id to delete");
-				itemID = utils.getLong();
-				orderDAO.deleteOrderItems(currentOrder.getOrderId(), itemID);
-				break;
-			case "add":
-
-				LOGGER.info("Please enter a item id");
-				Long itemId = utils.getLong();
-				LOGGER.info("Please enter a customer id");
-				Long custId = utils.getLong();
-				orderDAO.addItem(new OrderItem(null, itemId, custId));
-				LOGGER.info("Item successfully added to order");
-				break;
-			case "exit":
-				exit = true;
-				break;
-			default:
-				LOGGER.info("Error");
-				break;
-			}
-		} while (exit);
+			return orders;
+		} else if (addOrDelete.equals("remove")) {
+			LOGGER.info("Please enter the id of the item you wish to remove from the order");
+			Long itemId = utils.getLong();
+			Order orders = orderDAO.deleteOrderItems(orderId, itemId);
+			LOGGER.info("Order updated");
+			return orders;
+		} else {
+			System.out.println("Please enter either 'add' or 'remove'");
+		}
 		return orderDAO.read(orderId);
 	}
-
+	
 	
 	@Override
 	public int delete() {
@@ -139,8 +98,13 @@ public class OrderController implements CrudController<Order> {
 		return orderDAO.delete(orderId);
 	}
 
-
-
+//	public int deleteItem() {
+//		LOGGER.info("Please enter the id of the order you would like to delete");
+//		Long orderId = utils.getLong();
+//		LOGGER.info("Please enter the item id of the item you would like to delete");
+//		Long itemId = utils.getLong();
+//		return orderDAO.deleteOrderItems(orderId, itemId);
+//	}
 
 
 	@Override

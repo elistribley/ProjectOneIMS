@@ -16,6 +16,15 @@ public class OrderItem{
 		this.itemId = itemId;
 		
 	}
+	
+	
+	public OrderItem(Long orderId, Long itemId) {
+		super();
+		this.orderId = orderId;
+		this.itemId = itemId;
+	}
+
+
 	public OrderItem() {
 		super();
 	}

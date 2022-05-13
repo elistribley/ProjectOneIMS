@@ -1,20 +1,48 @@
-20220513 13:08:29 INFO  [main] ims.IMS IMS.java40 - Welcome to the Inventory Management System!
-20220513 13:08:29 INFO  [main] ims.IMS IMS.java45 - Which entity would you like to use?
-20220513 13:08:29 INFO  [main] domain.Domain Domain.java27 - CUSTOMER: Information about customers
-20220513 13:08:29 INFO  [main] domain.Domain Domain.java27 - ITEM: Individual Items
-20220513 13:08:29 INFO  [main] domain.Domain Domain.java27 - ORDER: Purchases of items
-20220513 13:08:29 INFO  [main] domain.Domain Domain.java27 - STOP: To close the application
-20220513 13:08:31 INFO  [main] ims.IMS IMS.java76 - What would you like to do with order:
-20220513 13:08:31 INFO  [main] controller.Action Action.java38 - CREATE: To save a new entity into the database
-20220513 13:08:31 INFO  [main] controller.Action Action.java38 - READ: To read an entity from the database
-20220513 13:08:31 INFO  [main] controller.Action Action.java38 - UPDATE: To change an entity already in the database
-20220513 13:08:31 INFO  [main] controller.Action Action.java38 - DELETE: To remove an entity from the database
-20220513 13:08:31 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
-20220513 13:08:33 INFO  [main] controller.OrderController OrderController.java115 - Orders [orderId=1, customerId=1, Items=[Item [itemId=1, itemName=Book, itemPrice=8.99]]]
-Order Total: £8.99
-20220513 13:08:33 INFO  [main] ims.IMS IMS.java76 - What would you like to do with order:
-20220513 13:08:33 INFO  [main] controller.Action Action.java38 - CREATE: To save a new entity into the database
-20220513 13:08:33 INFO  [main] controller.Action Action.java38 - READ: To read an entity from the database
-20220513 13:08:33 INFO  [main] controller.Action Action.java38 - UPDATE: To change an entity already in the database
-20220513 13:08:33 INFO  [main] controller.Action Action.java38 - DELETE: To remove an entity from the database
-20220513 13:08:33 INFO  [main] controller.Action Action.java38 - RETURN: To return to domain selection
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java36 - id:1 first name:jordan surname:harrison
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java46 - Please enter a first name
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java48 - Please enter a surname
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java50 - Please enter an address
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java53 - Customer created
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java82 - Please enter the id of the customer you would like to delete
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java62 - Please enter the id of the customer you would like to update
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java64 - Please enter a first name
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java66 - Please enter a surname
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java68 - Please enter an address
+20220513 14:45:12 INFO  [main] controller.CustomerController CustomerController.java71 - Customer Updated
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java38 - Item [itemId=5, itemName=Comic Book, itemPrice=9.99]
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java48 - Please enter name of item:
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java50 - Please enter the price of the item
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java53 - Item created
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java80 - Please enter the item id of the item you would like to delete
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java62 - Please enter the id of the item you would like to update
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java64 - Please enter the item name
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java66 - Please enter the item price
+20220513 14:45:12 INFO  [main] controller.ItemController ItemController.java69 - Item Updated
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java103 - Please enter the id of the order you would like to delete
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java105 - Please enter the item id of the item you would like to delete
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java115 - Orders [orderId=1, customerId=1, Items=[]]
+Order Total: £0.0
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java42 - Please enter a order id
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java44 - Please enter a customer id
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java47 - order created
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java95 - Please enter the order id of the item you would like to delete
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java97 - Order has been deleted
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java70 - Please enter the id of the order you wish to update
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java72 - Would you like to add or remove an item from an order?
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java75 - Please enter the id of the item you wish to add to the order
+20220513 14:45:12 INFO  [main] controller.OrderController OrderController.java78 - Order Updated
+20220513 14:45:17 ERROR [main] utils.DBUtils DBUtils.java31 - java.lang.NullPointerException: inStream parameter is null
+20220513 14:45:17 DEBUG [main] dao.OrderDAO OrderDAO.java204 - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id_order) VALUES (1)' at line 1
+20220513 14:45:17 ERROR [main] dao.OrderDAO OrderDAO.java205 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id_order) VALUES (1)' at line 1
+20220513 14:45:17 DEBUG [main] dao.OrderDAO OrderDAO.java131 - java.lang.NullPointerException: Cannot invoke "java.lang.Long.longValue()" because "this.orderId" is null
+20220513 14:45:17 ERROR [main] dao.OrderDAO OrderDAO.java132 - Cannot invoke "java.lang.Long.longValue()" because "this.orderId" is null
+20220513 14:45:17 DEBUG [main] dao.OrderDAO OrderDAO.java191 - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(order_id) VALUES (1)' at line 1
+20220513 14:45:17 ERROR [main] dao.OrderDAO OrderDAO.java192 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(order_id) VALUES (1)' at line 1
+20220513 14:45:18 DEBUG [main] dao.ItemsDAO ItemsDAO.java92 - java.sql.SQLException: Illegal operation on empty result set.
+20220513 14:45:18 ERROR [main] dao.ItemsDAO ItemsDAO.java93 - Illegal operation on empty result set.
+20220513 14:45:18 DEBUG [main] dao.OrderDAO OrderDAO.java191 - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(order_id) VALUES (2)' at line 1
+20220513 14:45:18 ERROR [main] dao.OrderDAO OrderDAO.java192 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(order_id) VALUES (2)' at line 1
+20220513 14:45:19 DEBUG [main] dao.OrderDAO OrderDAO.java176 - java.lang.NullPointerException: Cannot invoke "java.lang.Long.longValue()" because "this.orderId" is null
+20220513 14:45:19 ERROR [main] dao.OrderDAO OrderDAO.java177 - Cannot invoke "java.lang.Long.longValue()" because "this.orderId" is null
+20220513 14:45:19 DEBUG [main] dao.OrderDAO OrderDAO.java218 - java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Order(id_order, item_id) VALUES (1, 1)' at line 1
+20220513 14:45:19 ERROR [main] dao.OrderDAO OrderDAO.java219 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Order(id_order, item_id) VALUES (1, 1)' at line 1

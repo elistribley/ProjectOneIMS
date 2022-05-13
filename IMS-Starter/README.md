@@ -1,4 +1,4 @@
-Coverage: 34%
+
 # IMS Starter Project
 
 First Project for QA -- IMS Customer/Item/Order
@@ -36,19 +36,14 @@ The Domain.java tests are a basically test to ensure that the setters and getter
 
 * [Maven](https://maven.apache.org/) - Dependency Management
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
 * **Eli Stribley** - *Initial work* - [elistribley](https://github.com/elistribley)
 
-## License
+## POWERPOINT 
+[Presentation (2).pdf](https://github.com/elistribley/ProjectOneIMS/files/8688508/Presentation.2.pdf)
 
-This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details 
-
-*For help in [Choosing a license](https://choosealicense.com/)*
 
 ## Acknowledgments
 

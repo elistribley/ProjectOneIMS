@@ -44,6 +44,8 @@ The Domain.java tests are a basically test to ensure that the setters and getter
 ## POWERPOINT 
 [Presentation (2).pdf](https://github.com/elistribley/ProjectOneIMS/files/8688508/Presentation.2.pdf)
 
+Jira Board images included in powerpoint above incase access to Jira does not work.
+
 
 ## Acknowledgments
 
